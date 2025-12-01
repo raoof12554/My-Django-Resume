@@ -1,27 +1,26 @@
-# djangoProject/settings.py
-# -----------------------------------------------------
-
 from pathlib import Path
 import os
-import dj_database_url # مدیریت آسان اتصال دیتابیس از طریق URL
+import dj_database_url
+# config از decouple در محیط Production توسط os.environ جایگزین می‌شود، اما برای لوکال نگهداری می‌شود.
+from decouple import config 
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # ==========================================================
-# ۱. تنظیمات امنیتی ضروری برای Production
+# ۱. تنظیمات امنیتی و محیط Production
 # ==========================================================
 
-# SECRET_KEY: از متغیر محیطی بخوانید. از مقدار جایگزین فقط برای محیط توسعه لوکال استفاده کنید.
+# SECRET_KEY: خواندن از متغیر محیطی (ضروری در Render)
 SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-2=#49=b%(inur)!ev+ys^5f6v$m=le9by)e4_du148e_gy28av')
 
-# DEBUG: در محیط سرور باید False باشد.
+# DEBUG: در Render (Production) باید False باشد مگر اینکه صریحاً True تنظیم شده باشد.
 DEBUG = os.environ.get('DEBUG') == 'True' 
 
 # ALLOWED_HOSTS: آدرس های مجاز برای دسترسی به سایت
-# آدرس لوکال و آدرس استقرار Render را اضافه می‌کند.
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
 
+# اضافه کردن آدرس Render به لیست میزبان‌های مجاز
 if RENDER_EXTERNAL_HOSTNAME:
     ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
 
@@ -30,12 +29,14 @@ if RENDER_EXTERNAL_HOSTNAME:
 # ==========================================================
 
 INSTALLED_APPS = [
+    # هسته Django
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    
     # App های پروژه شما
     'Home_app',
     'contact_app',
@@ -45,7 +46,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     
-    # WhiteNoise باید مستقیماً بعد از SecurityMiddleware باشد.
+    # WhiteNoise برای مدیریت فایل‌های استاتیک در Production
     'whitenoise.middleware.WhiteNoiseMiddleware', 
     
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -58,7 +59,28 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'djangoProject.urls'
 
-# ... (بخش TEMPLATES بدون تغییر)
+# ==========================================================
+# TEMPLATES (تنظیمات نهایی برای رفع خطای admin.E403)
+# ==========================================================
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        # استفاده از pathlib.Path برای مسیردهی تمپلیت‌های اصلی
+        'DIRS': [BASE_DIR / 'templates'],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+                # این دو خط برای عملکرد Admin و Static/Media ضروری هستند
+                'django.template.context_processors.media',
+                'django.template.context_processors.static',
+            ],
+        },
+    },
+]
 
 WSGI_APPLICATION = 'djangoProject.wsgi.application'
 
@@ -66,17 +88,15 @@ WSGI_APPLICATION = 'djangoProject.wsgi.application'
 # ۳. تنظیمات دیتابیس (پشتیبانی از SQLite و Postgres)
 # ==========================================================
 
-# اگر متغیر محیطی DATABASE_URL (توسط Render) وجود داشت، از Postgres استفاده کن.
+# در Render از DATABASE_URL (Postgres) و در لوکال از SQLite استفاده می‌شود.
 if os.environ.get('DATABASE_URL'):
-    # تنظیمات دیتابیس Render (PostgreSQL)
     DATABASES = {
         'default': dj_database_url.config(
             default=os.environ.get('DATABASE_URL'),
-            conn_max_age=600  # تنظیمات برای اتصال پایدار
+            conn_max_age=600 
         )
     }
 else:
-    # در غیر این صورت (برای محیط لوکال)، از SQLite استفاده کن.
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
@@ -88,8 +108,26 @@ else:
 # ۴. سایر تنظیمات
 # ==========================================================
 
-# ... (بخش AUTH_PASSWORD_VALIDATORS، LANGUAGE_CODE و TIME_ZONE بدون تغییر)
-# (توجه: من این بخش ها را در کد نهایی حذف کردم اما شما باید در فایل خود نگه دارید)
+AUTH_PASSWORD_VALIDATORS = [
+    {
+        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+    },
+]
+
+# تنظیمات زبان و زمان
+LANGUAGE_CODE = 'fa-ir'
+TIME_ZONE = 'Asia/Tehran'
+USE_I18N = True
+USE_TZ = True
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
@@ -101,17 +139,26 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 STATIC_URL = '/static/'
 
 # مسیری برای جمع‌آوری فایل‌های استاتیک در Production (توسط collectstatic)
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+# استفاده از pathlib.Path
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 
+# دایرکتوری‌های حاوی فایل‌های استاتیک که در اپ‌ها نیستند
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
-    os.path.join(BASE_DIR, 'assets'),
+    BASE_DIR / 'static',
+    BASE_DIR / 'assets',
 ]
 
-# تنظیمات WhiteNoise برای فشرده‌سازی و کش کردن فایل‌های Static
+# تنظیمات WhiteNoise: برای فشرده‌سازی و کش کردن فایل‌های استاتیک (ضروری برای Production)
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 
-# Media Files (توجه: برای Production باید از S3 یا مشابه استفاده شود)
+# Media Files (فایل‌های آپلود شده توسط کاربر)
 MEDIA_URL = '/mediafiles/'
-MEDIA_ROOT = os.path.join(BASE_DIR, "mediafiles")
+MEDIA_ROOT = BASE_DIR / "mediafiles"
+
+
+# ==========================================================
+# ۶. متغیرهای سفارشی 
+# ==========================================================
+
+RESUME_NAME = os.environ.get('RESUME_NAME', 'رزومه خورشید ریانه (نسخه لوکال)')
