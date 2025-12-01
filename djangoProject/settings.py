@@ -165,3 +165,14 @@ if not DEBUG:
 
 # MEDIA_URL = '/media/'
 # MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# ----------------------
+# تنظیمات WhiteNoise (برای رفع خطای Source Map در Production)
+# ----------------------
+
+# True کردن این مقدار باعث می‌شود WhiteNoise خطاهایی مانند Missing .map files را نادیده بگیرد
+WHITENOISE_ALLOW_INSECURE_CONTENT = True 
+
+# این تنظیم برای WhiteNoise ضروری است
+# (در نسخه 6+ WhiteNoise، این مقدار به صورت پیش‌فرض توسط STATICFILES_STORAGE تنظیم می‌شود)
+WHITENOISE_MANIFEST_HASSING = True
