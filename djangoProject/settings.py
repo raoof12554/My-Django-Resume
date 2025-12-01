@@ -123,7 +123,7 @@ USE_TZ = True
 
 
 # ----------------------
-# تنظیمات Static Files (برای رفع خطای logo.png)
+# تنظیمات Static Files 
 # ----------------------
 
 # 1. مسیر دایرکتوری‌های استاتیک در Development 
@@ -138,10 +138,6 @@ STATIC_URL = 'static/'
 # 3. محلی که collectstatic فایل‌ها را در Production جمع‌آوری می‌کند (پوشه staticfiles)
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-# 4. تنظیم WhiteNoise Storage
-# (این در صورتی استفاده می‌شود که STORAGES تعریف نشده باشد، اما برای اطمینان نگه داشته می‌شود)
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
 # ----------------------
 # تنظیمات امنیتی اضافه برای Production (Render)
 # ----------------------
@@ -153,26 +149,15 @@ if not DEBUG:
     SESSION_COOKIE_SECURE = True
     CSRF_COOKIE_SECURE = True
     
-    # فشرده‌سازی فایل‌های استاتیک در Production با WhiteNoise
-    STORAGES = {
-        "staticfiles": {
-            "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
-            # **** مهم: تنظیم manifest_strict: False برای نادیده گرفتن فایل‌های گم‌شده (مانند .map) ****
-            "OPTIONS": {
-                "manifest_strict": False,
-            }
-        },
-    }
-
+    # 4. تنظیم WhiteNoise Storage برای Production
+    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+    
+    # **** مهم: تنظیم مستقیم WhiteNoise برای نادیده گرفتن فایل‌های Source Map (.map) ****
+    WHITENOISE_MANIFEST_STRICT = False
+    
 # ----------------------
 # متغیر MEDIA (اگر دارید)
 # ----------------------
 
 # MEDIA_URL = '/media/'
 # MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
-# ----------------------
-# تنظیمات WhiteNoise (برای رفع خطای Source Map در Production)
-# توجه: تنظیم WHITENOISE_ALLOW_INSECURE_CONTENT حذف شد زیرا برای این خطا کار نمی‌کرد.
-# این تنظیم WHITENOISE_MANIFEST_HASSING به طور خودکار توسط STATICFILES_STORAGE کنترل می‌شود.
-WHITENOISE_MANIFEST_HASSING = True
