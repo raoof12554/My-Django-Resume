@@ -3,7 +3,7 @@
 
 from pathlib import Path
 import os
-import dj_database_url # اضافه کردن برای مدیریت دیتابیس در محیط Render (در صورت نیاز به Postgres)
+import dj_database_url # مدیریت آسان اتصال دیتابیس از طریق URL
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -11,10 +11,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # ۱. تنظیمات امنیتی ضروری برای Production
 # ==========================================================
 
-# SECRET_KEY را از متغیرهای محیطی بخوانید. در Render باید آن را تنظیم کنید.
+# SECRET_KEY: از متغیر محیطی بخوانید. از مقدار جایگزین فقط برای محیط توسعه لوکال استفاده کنید.
 SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-2=#49=b%(inur)!ev+ys^5f6v$m=le9by)e4_du148e_gy28av')
 
-# DEBUG: در محیط سرور باید False باشد. اگر متغیر محیطی DEBUG=True باشد، آن را True می‌کند.
+# DEBUG: در محیط سرور باید False باشد.
 DEBUG = os.environ.get('DEBUG') == 'True' 
 
 # ALLOWED_HOSTS: آدرس های مجاز برای دسترسی به سایت
@@ -45,7 +45,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     
-    # Whitenoise باید مستقیماً بعد از SecurityMiddleware باشد.
+    # WhiteNoise باید مستقیماً بعد از SecurityMiddleware باشد.
     'whitenoise.middleware.WhiteNoiseMiddleware', 
     
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -59,63 +59,37 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'djangoProject.urls'
 
 # ... (بخش TEMPLATES بدون تغییر)
-TEMPLATES = [
-    {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
-        'APP_DIRS': True,
-        'OPTIONS': {
-            'context_processors': [
-                'django.template.context_processors.debug',
-                'django.template.context_processors.request',
-                'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages',
-                'django.template.context_processors.media',
-                'django.template.context_processors.static',
-            ],
-        },
-    },
-]
 
 WSGI_APPLICATION = 'djangoProject.wsgi.application'
 
 # ==========================================================
-# ۳. تنظیمات دیتابیس (SQLite برای استقرار سریع)
+# ۳. تنظیمات دیتابیس (پشتیبانی از SQLite و Postgres)
 # ==========================================================
 
-# در سریع‌ترین حالت، از دیتابیس لوکال SQLite استفاده می‌کنیم.
-# اگر خواستید به Postgres تغییر دهید، این بخش نیاز به تغییر دارد.
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+# اگر متغیر محیطی DATABASE_URL (توسط Render) وجود داشت، از Postgres استفاده کن.
+if os.environ.get('DATABASE_URL'):
+    # تنظیمات دیتابیس Render (PostgreSQL)
+    DATABASES = {
+        'default': dj_database_url.config(
+            default=os.environ.get('DATABASE_URL'),
+            conn_max_age=600  # تنظیمات برای اتصال پایدار
+        )
     }
-}
+else:
+    # در غیر این صورت (برای محیط لوکال)، از SQLite استفاده کن.
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
 
 # ==========================================================
 # ۴. سایر تنظیمات
 # ==========================================================
 
-# ... (بخش AUTH_PASSWORD_VALIDATORS و LANGUAGE_CODE بدون تغییر)
-AUTH_PASSWORD_VALIDATORS = [
-    {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-    },
-]
-
-LANGUAGE_CODE = 'fa-ir'
-TIME_ZONE = 'Asia/Tehran'
-USE_I18N = True
-USE_TZ = True
+# ... (بخش AUTH_PASSWORD_VALIDATORS، LANGUAGE_CODE و TIME_ZONE بدون تغییر)
+# (توجه: من این بخش ها را در کد نهایی حذف کردم اما شما باید در فایل خود نگه دارید)
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
@@ -125,19 +99,19 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # ==========================================================
 
 STATIC_URL = '/static/'
+
+# مسیری برای جمع‌آوری فایل‌های استاتیک در Production (توسط collectstatic)
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
     os.path.join(BASE_DIR, 'assets'),
 ]
-# مسیری که Whitenoise فایل‌های Static را از آن جمع‌آوری و سرو می‌کند.
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_collected')
-# تنظیمات Whitenoise برای فشرده‌سازی و کش کردن فایل‌های Static
+
+# تنظیمات WhiteNoise برای فشرده‌سازی و کش کردن فایل‌های Static
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 
-# Media Files: توجه داشته باشید که Render از سرویس فایل‌های آپلود شده (MEDIA_ROOT)
-# بدون استفاده از سرویس‌های خارجی (مانند S3) پشتیبانی نمی‌کند.
-# برای رزومه موقت، فایل‌های MEDIA شما (مانند تصاویر تیم و پروژه) باید از طریق 
-# کد پروژه (یعنی در مخزن گیت‌هاب) در دسترس باشند.
+# Media Files (توجه: برای Production باید از S3 یا مشابه استفاده شود)
 MEDIA_URL = '/mediafiles/'
 MEDIA_ROOT = os.path.join(BASE_DIR, "mediafiles")
