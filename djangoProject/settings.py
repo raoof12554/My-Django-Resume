@@ -1,6 +1,16 @@
 import os
 import dj_database_url
 from pathlib import Path
+# ایمپورت کردن کلاس پایه از WhiteNoise
+from whitenoise.storage import CompressedManifestStaticFilesStorage
+
+# --- کلاس سفارشی WhiteNoise Storage ---
+# این کلاس، ویژگی manifest_strict را روی False تنظیم می‌کند تا خطاهای مربوط به
+# فایل‌های Source Map (.map) که اغلب در محیط Production موجود نیستند، نادیده گرفته شوند.
+class WhiteNoiseStaticFilesStorage(CompressedManifestStaticFilesStorage):
+    manifest_strict = False
+# ---------------------------------------
+
 
 # ساختار پایه دایرکتوری پروژه
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -35,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # اپلیکیشن‌های شما:
     'Home_app.apps.HomeAppConfig', 
+    'contact_app', # <--- اپلیکیشن contact_app اضافه شد
     # 'Resume_app.apps.ResumeAppConfig', 
 ]
 
@@ -150,14 +161,8 @@ if not DEBUG:
     CSRF_COOKIE_SECURE = True
     
     # 4. تنظیم WhiteNoise Storage برای Production
-    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+    # استفاده از کلاس سفارشی WhiteNoiseStaticFilesStorage (که در بالای همین فایل تعریف شده)
+    # برای اطمینان از نادیده گرفتن خطای Source Map.
+    STATICFILES_STORAGE = 'djangoProject.settings.WhiteNoiseStaticFilesStorage'
     
-    # **** مهم: تنظیم مستقیم WhiteNoise برای نادیده گرفتن فایل‌های Source Map (.map) ****
-    WHITENOISE_MANIFEST_STRICT = False
-    
-# ----------------------
-# متغیر MEDIA (اگر دارید)
-# ----------------------
-
-# MEDIA_URL = '/media/'
-# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+    # متغیر محیطی WHITENOISE_MANIFEST_STRICT دیگر مورد نیاز نیست.
