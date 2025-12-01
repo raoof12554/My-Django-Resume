@@ -138,7 +138,8 @@ STATIC_URL = 'static/'
 # 3. محلی که collectstatic فایل‌ها را در Production جمع‌آوری می‌کند (پوشه staticfiles)
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-# 4. تنظیم WhiteNoise Storage (برای فشرده‌سازی و هشینگ فایل‌ها)
+# 4. تنظیم WhiteNoise Storage
+# (این در صورتی استفاده می‌شود که STORAGES تعریف نشده باشد، اما برای اطمینان نگه داشته می‌شود)
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # ----------------------
@@ -156,6 +157,10 @@ if not DEBUG:
     STORAGES = {
         "staticfiles": {
             "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+            # **** مهم: تنظیم manifest_strict: False برای نادیده گرفتن فایل‌های گم‌شده (مانند .map) ****
+            "OPTIONS": {
+                "manifest_strict": False,
+            }
         },
     }
 
@@ -168,11 +173,6 @@ if not DEBUG:
 
 # ----------------------
 # تنظیمات WhiteNoise (برای رفع خطای Source Map در Production)
-# ----------------------
-
-# True کردن این مقدار باعث می‌شود WhiteNoise خطاهایی مانند Missing .map files را نادیده بگیرد
-WHITENOISE_ALLOW_INSECURE_CONTENT = True 
-
-# این تنظیم برای WhiteNoise ضروری است
-# (در نسخه 6+ WhiteNoise، این مقدار به صورت پیش‌فرض توسط STATICFILES_STORAGE تنظیم می‌شود)
+# توجه: تنظیم WHITENOISE_ALLOW_INSECURE_CONTENT حذف شد زیرا برای این خطا کار نمی‌کرد.
+# این تنظیم WHITENOISE_MANIFEST_HASSING به طور خودکار توسط STATICFILES_STORAGE کنترل می‌شود.
 WHITENOISE_MANIFEST_HASSING = True
