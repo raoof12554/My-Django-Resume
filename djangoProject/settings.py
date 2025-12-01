@@ -128,14 +128,12 @@ MEDIA_ROOT = BASE_DIR / "mediafiles"
 STORAGES = {
     # پیکربندی Static File Storage توسط WhiteNoise
     "staticfiles": {
+        # استفاده از یک بک‌اند ذخیره‌سازی ساده‌تر برای جلوگیری از مشکلات Post-processing
         "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
     },
     
-    # ******************************************************
     # *** پیکربندی Media File Storage برای Production (S3) ***
-    # ******************************************************
     "default": {
-        # در Production از S3 استفاده می‌شود، در لوکال از FileSystemStorage
         "BACKEND": "storages.backends.s3boto3.S3Storage"
         if not DEBUG else "django.core.files.storage.FileSystemStorage",
     },
@@ -145,24 +143,17 @@ STORAGES = {
 # ۷. تنظیمات S3/Boto3 (فقط در Production استفاده می‌شود)
 # ==========================================================
 # این متغیرها باید در Render به عنوان متغیرهای محیطی (Environment Variables) تنظیم شوند.
-# AWS_ACCESS_KEY_ID: کلید دسترسی AWS شما
-# AWS_SECRET_ACCESS_KEY: کلید مخفی AWS شما
-# AWS_STORAGE_BUCKET_NAME: نام باکت S3 شما
 
 if not DEBUG:
-    # URL پایه برای فایل‌های Media که از S3 لود می‌شوند
     AWS_S3_CUSTOM_DOMAIN = os.environ.get('AWS_S3_CUSTOM_DOMAIN')
-    AWS_LOCATION = 'media' # پیشوند در باکت S3
+    AWS_LOCATION = 'media' 
     
-    # تنظیمات پیش‌فرض برای S3
-    AWS_S3_REGION_NAME = os.environ.get('AWS_REGION', 'us-east-1') # منطقه خود را تنظیم کنید
-    AWS_DEFAULT_ACL = 'public-read' # دسترسی عمومی به فایل‌ها
+    AWS_S3_REGION_NAME = os.environ.get('AWS_REGION', 'us-east-1') 
+    AWS_DEFAULT_ACL = 'public-read' 
 
     if not AWS_S3_CUSTOM_DOMAIN:
-        # اگر دامین کاستوم ندارید، از دامین خودکار S3 استفاده کنید
         AWS_S3_CUSTOM_DOMAIN = f'{os.environ.get("AWS_STORAGE_BUCKET_NAME")}.s3.{AWS_S3_REGION_NAME}.amazonaws.com'
 
-    # آدرس دهی کامل به فایل‌های آپلود شده
     MEDIA_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/{AWS_LOCATION}/"
     
 
@@ -171,6 +162,12 @@ if not DEBUG:
 # ==========================================================
 WHITENOISE_IGNORE_FILE_TYPES = ['map', 'eot', 'ttf', 'woff', 'woff2', 'otf']
 WHITENOISE_MANIFEST_STRICT = False
+
+# **تنظیم جدید و حیاتی برای رفع خطای materialdesignicons.min.css**
+# این تنظیم به WhiteNoise می‌گوید که فایل‌های CSS/JS خاص را در مرحله Post-processing نادیده بگیرد.
+# WhiteNoise به‌طور پیش‌فرض فایل‌های *.min.css را برای یافتن ارجاعات تغییر مسیر (Manifest) اسکن می‌کند.
+# با این دستور، ما به WhiteNoise می‌گوییم که از پردازش فایل‌های CSS کتابخانه‌ای صرف نظر کند.
+WHITENOISE_SKIP_COMPRESS_CONTENT = ['assets/libs/@mdi/font/css/materialdesignicons.min.css']
 
 
 # ==========================================================
