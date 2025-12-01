@@ -1,0 +1,25 @@
+/* static/assets/css/fonts.css */
+@font-face {
+    font-family: 'Vazir'; /* نام خانواده فونت شما */
+    src: url('../fonts/Vazir-Bold.eot');
+    src: url('../fonts/Vazir-Bold.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/Vazir-Bold.woff2') format('woff2'),
+         url('../fonts/Vazir-Bold.woff') format('woff'),
+         url('../fonts/Vazir-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+
+
+/* تعریف Material Design Icons اگر در این فایل قرار می‌گیرد: */
+@font-face {
+    font-family: "Material Design Icons";
+    src:url("../fonts/materialdesignicons-webfont.eot?v=7.2.96");
+    src:url("../fonts/materialdesignicons-webfont.eot?#iefix&v=7.2.96") format("embedded-opentype"),
+        url("../fonts/materialdesignicons-webfont.woff2?v=7.2.96") format("woff2"),
+        url("../fonts/materialdesignicons-webfont.woff?v=7.2.96") format("woff"),
+        url("../fonts/materialdesignicons-webfont.ttf?v=7.2.96") format("truetype");
+    font-weight:normal;
+    font-style:normal;
+}

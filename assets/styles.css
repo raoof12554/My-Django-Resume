@@ -1,0 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+.bg-violet-500 {
+    background-color: #8b5cf6 !important; /* رنگ بنفش Tailwind */
+}
+

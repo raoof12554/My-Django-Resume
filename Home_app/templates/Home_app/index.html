@@ -1,0 +1,516 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" class="light scroll-smooth" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Raoof.Pajohesh{% endblock %}</title> 
+    
+    {% include 'Home_app/includes/hedtaxt.html' %} 
+
+</head>
+<body class="vazir text-[15px] text-slate-900 dark:text-white dark:bg-slate-900">
+
+    <nav id="topnav" class="defaultscroll is-sticky" style="background-color: rgba(255, 255, 255, 0.75);"> {# Inline style for transparency #}
+        <div class="container relative">
+            <div class="menu-extras">
+                <div class="menu-item">
+                    <a class="navbar-toggle" id="isToggle" onclick="toggleMenu()">
+                        <div class="lines">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <ul class="buy-button list-none mb-0">
+
+                <li class="inline mb-0">
+                    <li class="inline">
+                        <a href="{{contact_info.watsapp}}" target="_blank" 
+                           class="h-8 w-8 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-[15px] text-center rounded-xl 
+                                  bg-orange-500 hover:bg-orange-600 border border-orange-500 hover:border-orange-600 text-white">
+                            <i data-feather="message-circle" class="h-[14px] w-[14px] align-middle" title="WhatsApp"></i>
+                        </a>
+                    </li>
+                </li>
+                <a href="{{contact_info.github}}" class="h-8 w-8 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-[15px] text-center rounded-xl bg-orange-500 hover:bg-orange-600 border border-orange-500 hover:border-orange-600 text-white"><i data-feather="github" class="h-[14px] w-[14px] align-middle" title="dribbble"></i></a>
+            </ul>
+            <div id="navigation">
+                <nav>
+                    <div class="container relative">
+                        <div class="relative flex items-center h-full">
+                            <a href="#" class="font-sans text-3xl font-bold tracking-widest text-black-900 rounded-lg focus:outline-none focus:shadow-outline z-10">AOOF</a>
+                            
+                            <svg class="h-10 w-10 absolute z-10" style="right: 74px; top: 0px;" viewBox="0 0 79 79" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M35.2574 2.24264C37.6005 -0.100501 41.3995 -0.100505 43.7426 2.24264L76.7574 35.2574C79.1005 37.6005 79.1005 41.3995 76.7574 43.7426L43.7426 76.7574C41.3995 79.1005 37.6005 79.1005 35.2574 76.7574L2.24264 43.7426C-0.100501 41.3995 -0.100505 37.6005 2.24264 35.2574L35.2574 2.24264Z" fill="#FF8C00"/>
+                                <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="#000000" font-family="sans-serif" font-weight="bold" font-size="70">R</text>
+                            </svg>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </nav>
+            
+
+        <!-- Start raoof-->
+        <section class="relative table w-full pt-44 pb-24">
+            <div class="container relative">
+                <div class="grid grid-cols-1">
+                    <h5 class="md:text-[42px] md:leading-normal text-3xl leading-normal font-bold mt-3">من بیزینس میسازم و آن را توسعه میدهم
+                        <span class="relative">PAJOHESH
+                            <img src="{% static 'assets/images/arrow.png' %}" class="w-full absolute end-0 block -rotate-[15deg] top-4 -z-1 opacity-70" alt="">
+                        </span>
+                    </h5>
+                    <p class="text-slate-400 dark:text-white/60 text-[17px] max-w-xl mt-4">من، رئوف، یک فرد خلاق و متخصص در حوزه محصولات و خدمات دیجیتال هستم. من با رویکردی استارتاپی، بر ارائه راهکارهای دیجیتالی تمرکز دارم که به موفقیت مشتریانم منجر می‌شود..</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="relative md:py-24 py-16 md:pt-0 pt-0">
+            <div class="container relative">
+                <div class="grid grid-cols-1 justify-center">
+                    <div class="relative z-1">
+                        <div class="grid grid-cols-1 md:text-start text-center justify-center">
+                            <div class="relative">
+                                <img src="{% static 'assets/images/stp.gif'%}" class="rounded-xl shadow-lg" alt="">
+                                <div class="absolute bottom-2/4 translate-y-2/4 start-0 end-0 text-center">
+                                        <i class="mdi mdi-play inline-flex items-center justify-center text-2xl"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="content md:mt-10 mt-6">
+                            <div class="grid lg:grid-cols-12 grid-cols-1 md:text-start text-center justify-center">
+                                <div class="lg:col-start-2 lg:col-span-10">
+                                    <div class="grid md:grid-cols-2 grid-cols-1 items-center gap-6">
+                                        <div class="text-md-start">
+                                            <h6 class="text-white/50 font-medium"></h6>
+                                            <h3 class="md:text-3xl md:leading-normal text-2xl leading-normal font-semibold text-white mt-2">تجربه بهتر در بیزینس خود <br></h3>
+                                        </div>
+
+                                        <div class="text-md-start">
+                                            <p class="text-white/50 max-w-xl mx-auto mb-2">raoof.pajohesh  موئسس شرکت استارتاپی است که محصولات و خدمات دیجیتال را با تمرکز بر موفقیت مشتری ارائه می‌دهد..</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="absolute bottom-0 start-0 end-0 sm:h-2/3 h-4/5 bg-gradient-to-b from-orange-500/50 to-orange-500"></div>
+        </section>
+        <!-- End raoof -->
+        
+        <!-- Start -->
+        <section class="relative overflow-hidden md:py-24 py-16">
+            <div class="container relative md:pb-24 pb-16">
+                <div class="grid md:grid-cols-12 grid-cols-1 items-center gap-6">
+                    <div class="lg:col-span-5 md:col-span-6">
+                        <div class="relative">
+                            <div class="relative flex justify-end">
+                                <img src="{% static 'assets/images/portforio.jpg' %}"  class="lg:w-[400px] w-[280px] rounded-xl shadow dark:shadow-gray-700" alt="">
+                                <div class="absolute top-0 translate-y-2/4 start-0 text-center">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="absolute md:-start-5 start-0 -bottom-16">
+                                <img src="{% static 'assets/images/raoof.png' %}"  class="lg:w-[280px] w-[200px] border-8 border-white dark:border-slate-900 rounded-xl" alt="">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-7 md:col-span-6">
+                        <div class="lg:ms-5">
+                            <h6 class="text-orange-500 text-sm font-medium uppercase mb-2">درباره من</h6>
+                            <h3 class="relative mt-16 md:mt-24 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 md:text-2xl text-xl font-medium">دانش و مهارت های من</h3>
+
+                            <p class="text-slate-400 dark:text-white/60 max-w-xl">بدیهی است که من یک مشاور توسعه بیزینس هستم و به تمام مراحل چرخه بیزنیس در امور مالی تا توسعه تجارت الکترونیک تجربه دارم.</p>
+
+                            <div class="my-skills-section">
+                                <style>
+                                    .skills-scroll-container {
+                                        max-height: 300px;
+                                        overflow-y: auto;
+                                        box-sizing: border-box;
+                                    }
+                                </style>
+                            
+                                {% if skills %}
+                                    <div class="skills-scroll-container">
+                                        {% for skill in skills %}
+                                            <div class="mt-4">
+                                                <div class="flex justify-between mb-2">
+                                                    <span class="text-slate-400 dark:text-white/60">{{ skill.name }}</span>
+                                                    <span class="text-slate-400 dark:text-white/60">{{ skill.level }}%</span>
+                                                </div>
+                                                <div class="w-full bg-gray-100 dark:bg-gray-800 rounded-full h-[6px]">
+                                                    <div class="bg-orange-500 h-[6px] rounded-full" style="width: {{ skill.level }}%;"></div>
+                                                </div>
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                {% else %}
+                                    <p>هنوز مهارتی برای نمایش وجود ندارد.</p>
+                                {% endif %}
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+                
+<div class="relative mt-16 md:mt-24 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16">
+    <div class="grid grid-cols-1 pb-6 text-center">
+        <h3 class="mb-6 text-xl md:text-2xl font-medium">پروژهای من</h3>
+        <p class="text-slate-400 dark:text-white/60 max-w-xl mx-auto text-sm sm:text-base">اینها فقط بخشی از پروژهای من است که برای بیزینسهای B2C و B2B انجام داده ام.</p>
+    </div>
+
+    <div class="grid grid-cols-1 items-center mt-6 gap-6">
+        <div class="filters-group-wrap text-center">
+            <div class="filters-group">
+                <ul class="mb-0 list-none container-filter filter-options space-x-2 sm:space-x-3">
+                    {% for category in portfolio_categories %}
+                        <li class="inline-block font-medium text-[14px] sm:text-[15px] mb-3 text-slate-400 cursor-pointer relative duration-500" data-group="{{ category.name|lower }}">{{ category.name }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mt-6">
+        {% for project in projects %}
+        <div class="picture-item" data-groups='["{{ project.completion_date|date:"Y-m-d" }}"]'>
+            <div class="group relative block overflow-hidden rounded-xl duration-500 shadow-lg">
+                {% if project.image %}
+                <a href="{{ project.image.url }}" class="lightbox block duration-500 group-hover:scale-105" title="{{ project.title }}">
+                    <img src="{{ project.image.url }}" class="w-full h-64 sm:h-72 md:h-80 object-cover" alt="{{ project.title }}">
+                </a>
+                {% else %}
+                <a href="{% static 'assets/images/about.jpg' %}" class="lightbox block duration-500 group-hover:scale-105" title="تصویری در دسترس نیست">
+                    <img src="{% static 'assets/images/about.jpg' %}" class="w-full h-64 sm:h-72 md:h-80 object-cover" alt="تصویری در دسترس نیست">
+                </a>
+                {% endif %}
+                <div class="absolute -bottom-52 group-hover:bottom-2 left-0 right-0 duration-500 bg-white dark:bg-slate-900 p-4 rounded-xl shadow dark:shadow-gray-800">
+                    <a href="#" class="hover:text-orange-500 text-base sm:text-[15px] duration-500 font-medium block">{{ project.title }}</a>
+                    <h6 class="text-slate-400 dark:text-white/60 text-xs sm:text-sm mt-1">{{ project.description }}</h6>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+            <div class="container relative md:mt-24 mt-16">
+                <div class="grid grid-cols-1 pb-6 text-center">
+                    <h3 class="mb-6 md:text-2xl text-xl font-medium">من چیکار میکنم؟</h3>
+
+                    <p class="text-slate-400 dark:text-white/60 max-w-xl mx-auto">مشاوره برندینگ , تجارت الکترونیک, مشاوره بیزینس ,توسعه وب, توسعه محصول,ساخت واستراتژی بازاریابی و جمع اوری KPI  بیزینس , ساخت دیتا سنتر و ساخت CRM.</p>
+                </div>
+
+                <div class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 mt-6 gap-6">
+
+                    <div class="group relative lg:px-6 transition duration-500 ease-in-out rounded-xl overflow-hidden text-center">
+                        <div class="relative overflow-hidden text-transparent -m-3">
+                            <i data-feather="hexagon" class="h-28 w-28 fill-orange-500/5 mx-auto rotate-[30deg]"></i>
+                            <div class="absolute top-2/4 -translate-y-2/4 start-0 end-0 mx-auto text-orange-500 rounded-xl transition duration-500 ease-in-out text-3xl flex align-middle justify-center items-center">
+                                <img src="{% static 'assets/images/icons/color-swatches.svg' %}" class="h-8" alt="">
+                            </div>
+                        </div>
+
+                        <div class="mt-6">
+                            <a  class="text-lg font-medium duration-500 hover:text-orange-500">بیزینس خودتو رشد بده</a>
+                            <p class="text-slate-400 dark:text-white/60 text-[15px] duration-500 mt-3">بهترین و حرفه‌ای ترین مشاورین برای رسیدن به اهداف شما در کمترین زمان و با بالاترین کیفیت.</p>
+                        </div>
+                    </div>
+                    <div class="group relative lg:px-6 transition duration-500 ease-in-out rounded-xl overflow-hidden text-center">
+                        <div class="relative overflow-hidden text-transparent -m-3">
+                            <i data-feather="hexagon" class="h-28 w-28 fill-orange-500/5 mx-auto rotate-[30deg]"></i>
+                            <div class="absolute top-2/4 -translate-y-2/4 start-0 end-0 mx-auto text-orange-500 rounded-xl transition duration-500 ease-in-out text-3xl flex align-middle justify-center items-center">
+                                <img src="{% static 'assets/images/icons/decent-work-and-economic-growth.svg' %}" class="h-8" alt="">
+                            </div>
+                        </div>
+
+                        <div class="mt-6">
+                            <a  class="text-lg font-medium duration-500 hover:text-orange-500">به سمت فروش بیشتر</a>
+                            <p class="text-slate-400 dark:text-white/60 text-[15px] duration-500 mt-3">ایجاد مزیت رقابتی,فروش طولی و عرضی , بازاریابی دیجیتالی و تبلیغات هدفمند,گیمیفیکیشن سازی در بیزینس, مدیریت نظرات و بازخوردها .</p>
+                        </div>
+                    </div>
+                    <div class="group relative lg:px-6 transition duration-500 ease-in-out rounded-xl overflow-hidden text-center">
+                        <div class="relative overflow-hidden text-transparent -m-3">
+                            <i data-feather="hexagon" class="h-28 w-28 fill-orange-500/5 mx-auto rotate-[30deg]"></i>
+                            <div class="absolute top-2/4 -translate-y-2/4 start-0 end-0 mx-auto text-orange-500 rounded-xl transition duration-500 ease-in-out text-3xl flex align-middle justify-center items-center">
+                                <img src="{% static 'assets/images/icons/flip-horizontal-arrow-1.svg'%}" class="h-8" alt="">
+                            </div>
+                        </div>
+
+                        <div class="mt-6">
+                            <a  class="text-lg font-medium duration-500 hover:text-orange-500">بحث برای ایده</a>
+                            <p class="text-slate-400 dark:text-white/60 text-[15px] duration-500 mt-3">تریس , کلاهای ادوارد دوبونو , نرم افزارهای ,CRM, ابزار مدیریت پروژه , ابزارهای اتوماسیون بازاریابی  ,  نرم افزارهای حسابداری و مالی, ابزاهای مدیریت منابع انسانی , پلتفرهای همکاری و تیمی ,  ابزارهای مدیریت فرایندها و اتوماسیون اداری,.</p>
+                        </div>
+                    </div>
+                    <div class="group relative lg:px-6 transition duration-500 ease-in-out rounded-xl overflow-hidden text-center">
+                        <div class="relative overflow-hidden text-transparent -m-3">
+                            <i data-feather="hexagon" class="h-28 w-28 fill-orange-500/5 mx-auto rotate-[30deg]"></i>
+                            <div class="absolute top-2/4 -translate-y-2/4 start-0 end-0 mx-auto text-orange-500 rounded-xl transition duration-500 ease-in-out text-3xl flex align-middle justify-center items-center">
+                                <img src="{% static 'assets/images/icons/layers-1.svg'%}" class="h-8" alt="">
+                            </div>
+                        </div>
+
+                        <div class="mt-6">
+                            <a  class="text-lg font-medium duration-500 hover:text-orange-500">افزایش نرخ تبدیل</a>
+                            <p class="text-slate-400 dark:text-white/60 text-[15px] duration-500 mt-3">افزایش نرخ تبدیل مشتری ثابت به وفادار, افزایش نرخ تبدیل نامشتری به مشتری, افزایش نرخ کلیک سایت , افزایش نرخ تبدیل کمپینهای ناموفق به موفق .</p>
+                        </div>
+                    </div>
+                    <!-- Content -->
+
+                    <!-- Content -->
+                    <div class="group relative lg:px-6 transition duration-500 ease-in-out rounded-xl overflow-hidden text-center">
+                        <div class="relative overflow-hidden text-transparent -m-3">
+                            <i data-feather="hexagon" class="h-28 w-28 fill-orange-500/5 mx-auto rotate-[30deg]"></i>
+                            <div class="absolute top-2/4 -translate-y-2/4 start-0 end-0 mx-auto text-orange-500 rounded-xl transition duration-500 ease-in-out text-3xl flex align-middle justify-center items-center">
+                                <img src="{% static 'assets/images/icons/pictures-folder-memories.svg'%}" class="h-8" alt="">
+                            </div>
+                        </div>
+
+                        <div class="mt-6">
+                            <a  class="text-lg font-medium duration-500 hover:text-orange-500">ایده رشد فروش</a>
+                            <p class="text-slate-400 dark:text-white/60 text-[15px] duration-500 mt-3">شناخت دقیق کسب و کار , قیمتگذاری دقیق و هوشمندانه, ارائه دوره اموزشی , بهبود تجربه خریدوخدمات پس از فروش , اموزش پرسنل,.</p>
+                        </div>
+                    </div>
+
+                    <div class="group relative lg:px-6 transition duration-500 ease-in-out rounded-full overflow-hidden text-center">
+                        <div class="relative overflow-hidden text-transparent -m-3">
+                            <i data-feather="hexagon" class="h-28 w-28 fill-orange-500/5 mx-auto rotate-[30deg]"></i>
+                            <div class="absolute top-2/4 -translate-y-2/4 start-0 end-0 mx-auto text-orange-500 rounded-xl transition duration-500 ease-in-out text-3xl flex align-middle justify-center items-center">
+                                <img src="{% static 'assets/images/icons/production-belt-time.svg'%}" class="h-8" alt="">
+                            </div>
+                        </div>
+
+                        <div class="mt-6">
+                            <a  class="text-lg font-medium duration-500 hover:text-orange-500">دیتابیس مناسب</a>
+                            <p class="text-slate-400 dark:text-white/60 text-[15px] duration-500 mt-3">مدیریت استراتژیک , مدیریت بازاریابی, مدیریت فروش , مدیریت تولید, مدیریت مالی, مدیریت عملیات, مدیریت فناوری اطلاعات , مدیریت ریسک,.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container relative lg:mt-24 mt-16">
+                <div class="grid grid-cols-1 pb-6 text-center">
+                    <h3 class="mb-4 md:text-2xl text-xl font-medium">مدارک بین المللی</h3>
+                    <p class="text-slate-400 dark:text-white/60 max-w-xl mx-auto">اینها فقط بخشی از مدارک بین المللی من هستند.</p>
+                </div>
+            
+                <div class="grid md:grid-cols-6 grid-cols-1 mt-6 gap-6 justify-items-center grid-flow-row ">
+                    {% for member in team_members %}
+                    <div class="lg:col-span-3 md:col-span-10 mb-12 h-auto ">
+                        <div class="group text-center">
+                            <div class="relative inline-block mx-auto h-52 w-52 rounded-full overflow-hidden">
+                                <img src="{{ member.image.url }}" class="w-full h-full object-cover" alt="{{ member.name }}">
+                                
+                                <ul class="list-none absolute top-1/2 -translate-y-1/2 -end-20 group-hover:end-5 transition-all duration-500 ease-in-out">
+                                    {% if member.facebook_url %}
+                                    <li class=""><a href="{{ member.facebook_url }}" class="h-8 w-8 inline-flex items-center text-center justify-center text-base font-normal tracking-wide border align-middle transition duration-500 ease-in-out rounded-full bg-orange-500 hover:bg-orange-600 border-orange-500 hover:border-orange-600 text-white" target="_blank" rel="noopener noreferrer"><i data-feather="facebook" class="h-4 w-4"></i></a></li>
+                                    {% endif %}
+                                    {% if member.instagram_url %}
+                                    <li class="mt-1"><a href="{{ member.instagram_url }}" class="h-8 w-8 inline-flex items-center text-center justify-center text-base font-normal tracking-wide border align-middle transition duration-500 ease-in-out rounded-full bg-orange-500 hover:bg-orange-600 border-orange-500 hover:border-orange-600 text-white" target="_blank" rel="noopener noreferrer"><i data-feather="instagram" class="h-4 w-4"></i></a></li>
+                                    {% endif %}
+                                    {% if member.linkedin_url %}
+                                    <li class="mt-1"><a href="{{ member.linkedin_url }}" class="h-8 w-8 inline-flex items-center text-center justify-center text-base font-normal tracking-wide border align-middle transition duration-500 ease-in-out rounded-full bg-orange-500 hover:bg-orange-600 border-orange-500 hover:border-orange-600 text-white" target="_blank" rel="noopener noreferrer"><i data-feather="linkedin" class="h-4 w-4"></i></a></li>
+                                    {% endif %}
+                                </ul>
+                            </div>
+                            
+                            <div class="content mt-3">
+                                <a href="" class="text-lg font-medium hover:text-orange-500 duration-500">{{ member.name }}</a>
+                                <p class="text-slate-400 dark:text-white/60">{{ member.position }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="container relative md:mt-24 mt-16" id="contact-section">
+                <div class="grid md:grid-cols-2 grid-cols-1 items-center gap-[30px]">
+                    <img src="{% static 'assets/images/contact.svg'%}" alt="">
+            
+                    <div class="lg:ms-5">
+                        <div class="bg-white dark:bg-slate-900 rounded-xl shadow dark:shadow-gray-700 p-6">
+                            <h3 class="mb-6 text-2xl leading-normal font-medium">تماس با ما !</h3>
+            
+                            {% if messages %}
+                                <ul class="list-none mb-4">
+                                    {% for message in messages %}
+                                        <li class="py-2 px-4 rounded-md {% if message.tags == 'success' %}bg-green-100 text-green-700{% elif message.tags == 'error' %}bg-red-100 text-red-700{% else %}bg-blue-100 text-blue-700{% endif %}">
+                                            {{ message }}
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            {% endif %}
+            
+                            <form method="post" action="{% url 'home_app:home' %}" name="myForm" id="myForm">
+                                {% csrf_token %}
+            
+                                <div class="grid lg:grid-cols-12 lg:gap-6">
+                                    <div class="lg:col-span-6 mb-5">
+                                        <label for="{{ form.fname.id_for_label }}" class="form-label font-medium">{{ form.fname.label }}:</label>
+                                        <input name="{{ form.fname.name }}" 
+                                               id="{{ form.fname.id_for_label }}" 
+                                               type="text" 
+                                               class="form-input w-full py-2 px-3 h-10 bg-transparent border border-inherit dark:border-gray-800 dark:bg-slate-900 dark:text-slate-200 rounded-xl outline-none focus:border-orange-500/50 dark:focus:border-orange-500/50 focus:ring-0 mt-2" 
+                                               placeholder="Name :" 
+                                               value="{{ form.fname.value|default:'' }}">
+                                        {% if form.fname.errors %}
+                                            {% for error in form.fname.errors %}
+                                                <p class="text-red-500 text-xs italic mt-1">{{ error }}</p>
+                                            {% endfor %}
+                                        {% endif %}
+                                    </div>
+
+                                    <div class="lg:col-span-6 mb-5">
+                                        <label for="{{ form.email.id_for_label }}" class="form-label font-medium">{{ form.email.label }}:</label>
+                                        <input name="{{ form.email.name }}" 
+                                               id="{{ form.email.id_for_label }}" 
+                                               type="email" 
+                                               class="form-input w-full py-2 px-3 h-10 bg-transparent border border-inherit dark:border-gray-800 dark:bg-slate-900 dark:text-slate-200 rounded-xl outline-none focus:border-orange-500/50 dark:focus:border-orange-500/50 focus:ring-0 mt-2" 
+                                               placeholder="Email :"
+                                               value="{{ form.email.value|default:'' }}">
+                                        {% if form.email.errors %}
+                                            {% for error in form.email.errors %}
+                                                <p class="text-red-500 text-xs italic mt-1">{{ error }}</p>
+                                            {% endfor %}
+                                        {% endif %}
+                                    </div>
+                                </div>
+            
+                                <div class="grid grid-cols-1">
+
+                                    <div class="mb-5">
+                                        <label for="{{ form.sub.id_for_label }}" class="form-label font-medium">{{ form.sub.label }}:</label>
+                                        <input name="{{ form.sub.name }}" 
+                                               id="{{ form.sub.id_for_label }}" 
+                                               type="text" 
+                                               class="form-input w-full py-2 px-3 h-10 bg-transparent border border-inherit dark:border-gray-800 dark:bg-slate-900 dark:text-slate-200 rounded-xl outline-none focus:border-orange-500/50 dark:focus:border-orange-500/50 focus:ring-0 mt-2" 
+                                               placeholder="Subject :"
+                                               value="{{ form.sub.value|default:'' }}">
+                                        {% if form.sub.errors %}
+                                            {% for error in form.sub.errors %}
+                                                <p class="text-red-500 text-xs italic mt-1">{{ error }}</p>
+                                            {% endfor %}
+                                        {% endif %}
+                                    </div>
+            
+
+                                    <div class="mb-5">
+                                        <label for="{{ form.body.id_for_label }}" class="form-label font-medium">{{ form.body.label }}:</label>
+                                        <textarea name="{{ form.body.name }}" 
+                                                  id="{{ form.body.id_for_label }}" 
+                                                  class="form-input w-full py-2 px-3 bg-transparent border border-inherit dark:border-gray-800 dark:bg-slate-900 dark:text-slate-200 rounded-xl outline-none focus:border-orange-500/50 dark:focus:border-orange-500/50 focus:ring-0 mt-2 textarea h-28" 
+                                                  placeholder="Message :">{{ form.body.value|default:'' }}</textarea>
+                                        {% if form.body.errors %}
+                                            {% for error in form.body.errors %}
+                                                <p class="text-red-500 text-xs italic mt-1">{{ error }}</p>
+                                            {% endfor %}
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <button type="submit" id="submit" name="send" class="py-2 px-5 inline-block font-normal tracking-wide border align-middle transition duration-500 ease-in-out text-base text-center bg-orange-500 hover:bg-orange-600 border-orange-500 hover:border-orange-600 text-white rounded-xl">ارسال پیام</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Start Footer -->
+        <footer class="relative bg-gray-900 overflow-hidden">
+            <div class="py-[30px] px-0 border-t border-slate-800">
+                <div class="container relative text-center">
+                    <div class="grid lg:grid-cols-12 md:grid-cols-3 grid-cols-1 items-center">
+                        <div class="lg:col-span-3 md:text-start text-center">
+                            <a href="#" class="text-[22px] focus:outline-none">
+                                <img src="assets/images/logo-white.png" class="mx-auto md:me-auto md:ms-0" alt="">
+                            </a>
+
+
+                            <nav>
+                                <div class="container relative">
+                                    <div class="relative flex items-center h-full">
+                                        <a href="#" class="font-sans text-3xl font-bold tracking-widest text-white rounded-lg focus:outline-none focus:shadow-outline z-20">AJOHESH</a>
+                                        
+                                        <br>
+                                        <svg class="h-10 w-10 absolute z-10" style="right: 125px; top: -11px;" viewBox="0 0 79 79" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M35.2574 2.24264C37.6005 -0.100501 41.3995 -0.100505 43.7426 2.24264L76.7574 35.2574C79.1005 37.6005 79.1005 41.3995 76.7574 43.7426L43.7426 76.7574C41.3995 79.1005 37.6005 79.1005 35.2574 76.7574L2.24264 43.7426C-0.100501 41.3995 -0.100505 37.6005 2.24264 35.2574L35.2574 2.24264Z" fill="#FF8C00"/>
+                                            <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="#000000" font-family="sans-serif" font-weight="bold" font-size="70">P</text>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </nav>
+                        </div>
+
+                        <div class="lg:col-span-5 text-center mt-6 md:mt-0">
+                            <p class="mb-0 text-gray-400">© <script>document.write(new Date().getFullYear())</script>  Design <i class="mdi mdi-heart text-red-600"></i> by <a  target="_blank" class="text-reset">Raoof.Pajohesh</a>.</p>
+                        </div>   
+
+                        
+
+                        <ul class="lg:col-span-4 list-none md:text-end text-center mt-6 md:mt-0">
+                            <li class="inline">
+                                <a href="tel:{{ contact_info.phone }}" class="h-8 w-8 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-[15px] text-center border border-gray-800 dark:border-slate-800 rounded-xl hover:border-orange-500 dark:hover:border-orange-500 hover:bg-orange-500 dark:hover:bg-orange-500 text-slate-300 hover:text-white">
+                                    <i data-feather="phone" class="h-[14px] w-[14px] align-middle" title="Phone"></i>
+                                </a>
+                            </li>
+                            <li class="inline"><a href="{{contact_info.instgram}}" target="_blank" class="h-8 w-8 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-[15px] text-center border border-gray-800 dark:border-slate-800 rounded-xl hover:border-orange-500 dark:hover:border-orange-500 hover:bg-orange-500 dark:hover:bg-orange-500 text-slate-300 hover:text-white"><i data-feather="instagram" class="h-[14px] w-[14px] align-middle" title="instagram"></i></a></li>
+                            <li class="inline">
+                                <a href="mailto:{{ contact_info.email }}" class="h-8 w-8 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-[15px] text-center border border-gray-800 dark:border-slate-800 rounded-xl hover:border-orange-500 dark:hover:border-orange-500 hover:bg-orange-500 dark:hover:bg-orange-500 text-slate-300 hover:text-white">
+                                    <i data-feather="mail" class="h-[14px] w-[14px] align-middle" title="email"></i>
+                                </a>
+                            </li>
+                        </ul><!--end icon-->
+                    </div><!--end grid-->
+                </div><!--end container-->
+            </div>
+        </footer><!--end footer-->
+        <!-- End Footer -->
+
+        <!-- Back to top -->
+        <a href="#" onclick="topFunction()" id="back-to-top" class="back-to-top fixed hidden text-lg rounded-xl z-10 bottom-5 end-5 h-8 w-8 text-center bg-orange-500 hover:bg-orange-600 text-white leading-9 justify-center items-center duration-500"><i data-feather="arrow-up" class="h-[14px] w-[14px] stroke-[3]"></i></a>
+        <!-- Back to top -->
+
+        <!-- Switcher -->
+        <div class="fixed top-1/4 -right-2 z-3">
+            <span class="relative inline-block rotate-90">
+                <input type="checkbox" class="checkbox opacity-0 absolute" id="chk" />
+                <label class="label bg-slate-900 dark:bg-white shadow dark:shadow-gray-800 cursor-pointer rounded-full flex justify-between items-center p-1 w-14 h-8" for="chk">
+                    <i data-feather="moon" class="h-[18px] w-[18px] text-yellow-500"></i>
+                    <i data-feather="sun" class="h-[18px] w-[18px] text-yellow-500"></i>
+                    <span class="ball bg-white dark:bg-slate-900 rounded-full absolute top-[2px] left-[2px] w-7 h-7"></span>
+                </label>
+            </span>
+        </div>
+        <!-- Switcher -->
+
+        <!-- LTR & RTL Mode Code -->
+        <div class="fixed top-1/3 -right-3 z-50">
+            <a href="" id="switchRtl">
+                <span class="py-1 px-3 relative inline-block rounded-t-md -rotate-90 bg-white dark:bg-slate-900 shadow-md dark:shadow dark:shadow-gray-800 font-semibold rtl:block ltr:hidden" >LTR</span>
+                <span class="py-1 px-3 relative inline-block rounded-t-md -rotate-90 bg-white dark:bg-slate-900 shadow-md dark:shadow dark:shadow-gray-800 font-semibold ltr:block rtl:hidden">RTL</span>
+            </a>
+        </div>
+        <!-- LTR & RTL Mode Code -->
+
+        <!-- JAVASCRIPTS -->
+        <script src="{% static 'assets/libs/shufflejs/shuffle.min.js' %}"></script>
+        <script src="{% static 'assets/libs/tobii/js/tobii.min.js' %}"></script>
+        <script src="{% static 'assets/libs/feather-icons/feather.min.js' %}"></script>
+        <script src="{% static 'assets/js/plugins.init.js' %}"></script>
+        <script src="{% static 'assets/js/app.js' %}"></script>
+        <!-- JAVASCRIPTS -->
+    </body>
+</html>

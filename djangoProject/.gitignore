@@ -1,0 +1,15 @@
+# .gitignore
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Environment
+venv/
+.env
+
+# Django
+db.sqlite3          # فایل دیتابیس لوکال شما
+/staticfiles_collected/ # پوشه‌ای که فایل‌های Static در آن جمع‌آوری می‌شوند
+/mediafiles/        # پوشه‌ای که فایل‌های آپلودی شما (مثل عکس پروفایل) در آن ذخیره می‌شوند

@@ -1,0 +1,299 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" class="light scroll-smooth" dir="ltr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Muvico - Tailwind CSS Personal & Minimal Portfolio Template</title>
+        <meta name="description" content="Tailwind CSS Personal & Minimal Portfolio Template">
+        <meta name="keywords" content="AI, Copywriting, Tailwind, Responsive, Artificial Intelligence, Robot, Robot AI">
+        <meta name="author" content="Shreethemes">
+        <meta name="website" content="https://shreethemes.in">
+        <meta name="email" content="support@shreethemes.in">
+        <meta name="version" content="1.0">
+        <!-- favicon -->
+        <link href="assets/images/favicon.ico" rel="shortcut icon">
+
+        <!-- Css -->
+        <link href="assets/libs/tobii/css/tobii.min.css" rel="stylesheet">
+        <!-- Main Css -->
+        <link href="assets/libs/@mdi/font/css/materialdesignicons.min.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="assets/css/tailwind.css">
+
+    </head>
+    
+    <body class="font-poppins text-[15px] text-slate-900 dark:text-white dark:bg-slate-900">
+        <!-- Loader Start -->
+        <!-- <div id="preloader">
+            <div id="status">
+                <div class="logo">
+                    <img src="assets/images/logo-icon-64.png" class="d-block mx-auto animate-[spin_10s_linear_infinite]" alt="">
+                </div>
+                <div class="justify-content-center">
+                    <div class="text-center">
+                        <h4 class="mb-0 mt-2 text-lg font-semibold">Muvico</h4>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+        <!-- Loader End -->
+        
+        <!-- Start Navbar -->
+        <nav id="topnav" class="defaultscroll is-sticky">
+            <div class="container relative">
+                <!-- Logo container-->
+                <a class="logo" href="index.html">
+                    <img src="assets/images/logo-dark.png" class="h-5 inline-block dark:hidden" alt="">
+                    <img src="assets/images/logo-white.png" class="h-5 hidden dark:inline-block" alt="">
+                </a>
+                <!-- End Logo container-->
+
+                <!-- Start Mobile Toggle -->
+                <div class="menu-extras">
+                    <div class="menu-item">
+                        <a class="navbar-toggle" id="isToggle" onclick="toggleMenu()">
+                            <div class="lines">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <!-- End Mobile Toggle -->
+
+                <!--Login button Start-->
+                <ul class="buy-button list-none mb-0">
+                    <li class="inline mb-0">
+                        <a href="" class="h-8 w-8 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-[15px] text-center rounded-xl bg-orange-500 hover:bg-orange-600 border border-orange-500 hover:border-orange-600 text-white"><i data-feather="dribbble" class="h-[14px] w-[14px] align-middle" title="dribbble"></i></a>
+                    </li>
+                    <li class="inline mb-0">
+                        <a href="" class="h-8 w-8 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-[15px] text-center rounded-xl bg-orange-500 hover:bg-orange-600 border border-orange-500 hover:border-orange-600 text-white"><i data-feather="linkedin" class="h-[14px] w-[14px] align-middle" title="dribbble"></i></a>
+                    </li>
+                    <li class="inline mb-0">
+                        <a href="" class="h-8 w-8 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-[15px] text-center rounded-xl bg-orange-500 hover:bg-orange-600 border border-orange-500 hover:border-orange-600 text-white"><i data-feather="github" class="h-[14px] w-[14px] align-middle" title="dribbble"></i></a>
+                    </li>
+                </ul>
+                <!--Login button End-->
+
+                <div id="navigation">
+                    <!-- Navigation Menu-->   
+                    <ul class="navigation-menu justify-end">
+                        <li class="has-submenu parent-menu-item">
+                            <a href="javascript:void(0)">Home</a><span class="menu-arrow"></span>
+                            <ul class="submenu">
+                                <li><a href="index.html" class="sub-menu-item">Hero One</a></li>
+                                <li><a href="index-two.html" class="sub-menu-item">Hero Two</a></li>
+                                <li><a href="index-three.html" class="sub-menu-item">Hero Three</a></li>
+                            </ul>
+                        </li>
+                
+                        <li><a href="aboutus.html" class="sub-menu-item">About Us</a></li>
+
+                        <li><a href="services.html" class="sub-menu-item">Services </a></li>
+                
+                        <li class="has-submenu parent-parent-menu-item">
+                            <a href="javascript:void(0)">Portfolio</a><span class="menu-arrow"></span>
+                            <ul class="submenu megamenu">
+                                <li>
+                                    <ul>
+                                        <li class="megamenu-head">Modern Portfolio</li>
+                                        <li><a href="portfolio-modern-two.html" class="sub-menu-item">Two Column</a></li>
+                                        <li><a href="portfolio-modern-three.html" class="sub-menu-item">Three Column</a></li>
+                                        <li><a href="portfolio-modern-four.html" class="sub-menu-item">Four Column</a></li>
+                                        <li><a href="portfolio-modern-five.html" class="sub-menu-item">Five Column</a></li>
+                                        <li><a href="portfolio-modern-six.html" class="sub-menu-item">Six Column</a></li>
+                                    </ul>
+                                </li>
+
+                                <li>
+                                    <ul>
+                                        <li class="megamenu-head">Classic Portfolio</li>
+                                        <li><a href="portfolio-classic-two.html" class="sub-menu-item">Two Column</a></li>
+                                        <li><a href="portfolio-classic-three.html" class="sub-menu-item">Three Column</a></li>
+                                        <li><a href="portfolio-classic-four.html" class="sub-menu-item">Four Column</a></li>
+                                        <li><a href="portfolio-classic-five.html" class="sub-menu-item">Five Column</a></li>
+                                        <li><a href="portfolio-classic-six.html" class="sub-menu-item">Six Column</a></li>
+                                    </ul>
+                                </li>
+
+                                <li>
+                                    <ul>
+                                        <li class="megamenu-head">Creative Portfolio</li>
+                                        <li><a href="portfolio-creative-two.html" class="sub-menu-item">Two Column</a></li>
+                                        <li><a href="portfolio-creative-three.html" class="sub-menu-item">Three Column</a></li>
+                                        <li><a href="portfolio-creative-four.html" class="sub-menu-item">Four Column</a></li>
+                                        <li><a href="portfolio-creative-five.html" class="sub-menu-item">Five Column</a></li>
+                                        <li><a href="portfolio-creative-six.html" class="sub-menu-item">Six Column</a></li>
+                                    </ul>
+                                </li>
+                
+                                <li>
+                                    <ul>
+                                        <li class="megamenu-head">Masonry Portfolio</li>
+                                        <li><a href="portfolio-masonry-two.html" class="sub-menu-item">Two Column</a></li>
+                                        <li><a href="portfolio-masonry-three.html" class="sub-menu-item">Three Column</a></li>
+                                        <li><a href="portfolio-masonry-four.html" class="sub-menu-item">Four Column</a></li>
+                                        <li><a href="portfolio-masonry-five.html" class="sub-menu-item">Five Column</a></li>
+                                        <li><a href="portfolio-masonry-six.html" class="sub-menu-item">Six Column</a></li>
+                                    </ul>
+                                </li>
+                
+                                <li>
+                                    <ul>
+                                        <li class="megamenu-head">Portfolio Detail</li>
+                                        <li><a href="portfolio-detail-one.html" class="sub-menu-item">Portfolio One</a></li>
+                                        <li><a href="portfolio-detail-two.html" class="sub-menu-item">Portfolio Two</a></li>
+                                        <li><a href="portfolio-detail-three.html" class="sub-menu-item">Portfolio Three</a></li>
+                                        <li><a href="portfolio-detail-four.html" class="sub-menu-item">Portfolio Four</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="has-submenu parent-menu-item">
+                            <a href="javascript:void(0)">Blog</a><span class="menu-arrow"></span>
+                            <ul class="submenu">
+                                <li><a href="blogs.html" class="sub-menu-item">Blogs</a></li>
+                                <li><a href="blog-detail.html" class="sub-menu-item">Blog Detail</a></li>
+                            </ul>
+                        </li>
+                
+                        <li><a href="contactus.html" class="sub-menu-item">Contact Us</a></li>
+                    </ul><!--end navigation menu-->
+                </div><!--end navigation-->
+            </div><!--end container-->
+        </nav><!--end header-->
+        <!-- End Navbar -->
+
+        <!-- Start -->
+        <section class="relative pt-40 md:pb-24 pb-16">
+            <div class="container relative">
+                <div class="md:flex justify-center">
+                    <div class="lg:w-3/5">
+                        <h5 class="md:text-3xl text-2xl md:leading-normal leading-normal font-medium">Stop Worrying About Deadlines! We Got You Covered</h5>
+                        <p class="text-slate-400 dark:text-white/60 mt-4">Language is a window to who we are as people. Through the words we use and how we use them, people access a part of us, who we are.</p>
+
+                        <div class="flex mt-5">
+                            <span class="font-medium"><i class="mdi mdi-calendar-blank-outline me-2"></i>20th September, 2023</span>
+                            <span class="ms-3 font-medium"><i class="mdi mdi-clock-outline me-2"></i>5 min read</span>
+                        </div>
+
+                        <div class="flex items-center mt-5">
+                            <img src="assets/images/team/01.jpg" class="h-12 w-12 rounded-xl" alt="">
+
+                            <div class="ms-2">
+                                <a href="" class="font-medium block hover:text-orange-500">Calvin Carlo</a>
+                                <span class="text-slate-400 dark:text-white/60 text-sm block">Blogger</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="md:flex justify-center mt-6">
+                    <div class="lg:w-full">
+                        <div class="relative">
+                            <img src="assets/images/blog/4.jpg" class="rounded-xl shadow-md dark:shadow-gray-800" alt="">
+                            <div class="absolute bottom-2/4 translate-y-2/4 start-0 end-0 text-center">
+                                <a href="#!" data-type="youtube" data-id="S_CGed6E610"
+                                    class="lightbox h-20 w-20 rounded-full shadow-lg dark:shadow-gray-800 inline-flex items-center justify-center bg-white dark:bg-slate-900 text-orange-500">
+                                    <i class="mdi mdi-play inline-flex items-center justify-center text-2xl"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="md:flex justify-center mt-6">
+                    <div class="lg:w-3/5">
+                        <p class="text-slate-400 dark:text-white/60 text-[15px]">This rule applies to whether you're building brands or writing novels because people don't trust a Sybil. Our brains crave the comfort reliability and consistency breeds. We're confused when we see someone act one way and that way changes on the daily. They're performative instead of real.</p>
+                        <p class="text-slate-400 dark:text-white/60 text-[15px] mt-4">In marketing, our “voice” is the personality we embody when we show up for our audiences, community, partners, and employees. It's our vibe and flavor, the words we use and how we use them. We can dial up and down facets of our personality depending on the environment. Sound familiar? It's called life.</p>
+                        <p class="text-slate-400 dark:text-white/60 text-[15px] mt-4">We build trust when — interaction after interaction, channel after channel — we come across as the same “person.” In marketing, a verbal identity helps everyone who communicates on behalf of a brand to express themselves consistently so their audiences have the same powerful experience regardless of where they encounter the brand.</p>
+                        <p class="text-slate-400 dark:text-white/60 text-[15px] mt-4">But I'm not here to rehash a fifteen-minute tutorial I wrote eighteen months ago, rather I want to show you how to apply methodical tools and tactics to cultivate your prose or writing voice.</p>
+
+                        <img src="assets/images/blog/5.jpg" class="rounded-xl mt-4" alt="">
+
+                        <p class="text-slate-400 dark:text-white/60 text-[15px] mt-4">I didn't find my voice until I was thirty-seven and I've been writing since I was six — you do the pitiful math. Because like everything else in my life, I chose to go at writing the hard way instead of seeing the symbiotic nature of what I was doing for a living (building brands and telling stories) and how I could employ the tools I learned and built for myself in my writing life.</p>
+                        <p class="text-slate-400 dark:text-white/60 text-[15px] mt-4">For years, I kept the warring factions in my brain disparate because I never thought fiction and marketing could play harmoniously in the same sandbox until it occurred to me that both, at their core, are about telling stories. My on-duty life centered on telling stories about products and companies while my evenings were spent telling stories about the…</p>
+                    </div>
+                </div>
+            </div><!--end container-->
+
+            <div class="container relative md:mt-24 mt-16">
+                <div class="grid grid-cols-1 text-center">
+                    <span class="text-slate-400 dark:text-white/60 text-[15px] mb-4">Available for freelance projects</span>
+                    <h3 class="md:text-3xl text-2xl md:leading-normal leading-normal font-semibold">Do you have designing project? <br> Let's talk.</h3>
+
+                    <div class="mt-6">
+                        <a href="contactus.html" class="py-2 px-5 inline-flex items-center font-medium tracking-wide border align-middle duration-500 text-[15px] text-center bg-orange-500 hover:bg-orange-600 border-orange-500 hover:border-orange-600 text-white rounded-xl"><i data-feather="phone" class="h-[15px] w-[15px] me-2"></i> Contact us</a>
+                    </div>
+                </div><!--end grid-->
+            </div><!--end container-->
+        </section><!--end section-->
+        <!-- End -->
+
+        <!-- Start Footer -->
+        <footer class="relative bg-gray-900 overflow-hidden">
+            <div class="py-[30px] px-0 border-t border-slate-800">
+                <div class="container relative text-center">
+                    <div class="grid lg:grid-cols-12 md:grid-cols-3 grid-cols-1 items-center">
+                        <div class="lg:col-span-3 md:text-start text-center">
+                            <a href="#" class="text-[22px] focus:outline-none">
+                                <img src="assets/images/logo-white.png" class="mx-auto md:me-auto md:ms-0" alt="">
+                            </a>
+                        </div>
+
+                        <div class="lg:col-span-5 text-center mt-6 md:mt-0">
+                            <p class="mb-0 text-gray-400">© <script>document.write(new Date().getFullYear())</script> Muvico. Design with <i class="mdi mdi-heart text-red-600"></i> by <a href="https://shreethemes.in/" target="_blank" class="text-reset">Shreethemes</a>.</p>
+                        </div>
+
+                        <ul class="lg:col-span-4 list-none md:text-end text-center mt-6 md:mt-0">
+                            <li class="inline"><a href="https://1.envato.market/muvico" target="_blank" class="h-8 w-8 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-[15px] text-center border border-gray-800 dark:border-slate-800 rounded-xl hover:border-orange-500 dark:hover:border-orange-500 hover:bg-orange-500 dark:hover:bg-orange-500 text-slate-300 hover:text-white"><i data-feather="shopping-cart" class="h-[14px] w-[14px] align-middle" title="Buy Now"></i></a></li>
+                            <li class="inline"><a href="https://dribbble.com/shreethemes" target="_blank" class="h-8 w-8 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-[15px] text-center border border-gray-800 dark:border-slate-800 rounded-xl hover:border-orange-500 dark:hover:border-orange-500 hover:bg-orange-500 dark:hover:bg-orange-500 text-slate-300 hover:text-white"><i data-feather="dribbble" class="h-[14px] w-[14px] align-middle" title="dribbble"></i></a></li>
+                            <li class="inline"><a href="http://linkedin.com/company/shreethemes" target="_blank" class="h-8 w-8 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-[15px] text-center border border-gray-800 dark:border-slate-800 rounded-xl hover:border-orange-500 dark:hover:border-orange-500 hover:bg-orange-500 dark:hover:bg-orange-500 text-slate-300 hover:text-white"><i data-feather="linkedin" class="h-[14px] w-[14px] align-middle" title="Linkedin"></i></a></li>
+                            <li class="inline"><a href="https://www.facebook.com/shreethemes" target="_blank" class="h-8 w-8 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-[15px] text-center border border-gray-800 dark:border-slate-800 rounded-xl hover:border-orange-500 dark:hover:border-orange-500 hover:bg-orange-500 dark:hover:bg-orange-500 text-slate-300 hover:text-white"><i data-feather="facebook" class="h-[14px] w-[14px] align-middle" title="facebook"></i></a></li>
+                            <li class="inline"><a href="https://www.instagram.com/shreethemes/" target="_blank" class="h-8 w-8 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-[15px] text-center border border-gray-800 dark:border-slate-800 rounded-xl hover:border-orange-500 dark:hover:border-orange-500 hover:bg-orange-500 dark:hover:bg-orange-500 text-slate-300 hover:text-white"><i data-feather="instagram" class="h-[14px] w-[14px] align-middle" title="instagram"></i></a></li>
+                            <li class="inline"><a href="https://twitter.com/shreethemes" target="_blank" class="h-8 w-8 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-[15px] text-center border border-gray-800 dark:border-slate-800 rounded-xl hover:border-orange-500 dark:hover:border-orange-500 hover:bg-orange-500 dark:hover:bg-orange-500 text-slate-300 hover:text-white"><i data-feather="twitter" class="h-[14px] w-[14px] align-middle" title="twitter"></i></a></li>
+                            <li class="inline"><a href="mailto:support@shreethemes.in" class="h-8 w-8 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-[15px] text-center border border-gray-800 dark:border-slate-800 rounded-xl hover:border-orange-500 dark:hover:border-orange-500 hover:bg-orange-500 dark:hover:bg-orange-500 text-slate-300 hover:text-white"><i data-feather="mail" class="h-[14px] w-[14px] align-middle" title="email"></i></a></li>
+                            <li class="inline"><a href="https://forms.gle/QkTueCikDGqJnbky9" target="_blank" class="h-8 w-8 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-[15px] text-center border border-gray-800 dark:border-slate-800 rounded-xl hover:border-orange-500 dark:hover:border-orange-500 hover:bg-orange-500 dark:hover:bg-orange-500 text-slate-300 hover:text-white"><i data-feather="file-text" class="h-[14px] w-[14px] align-middle" title="customization"></i></a></li>
+                        </ul><!--end icon-->
+                    </div><!--end grid-->
+                </div><!--end container-->
+            </div>
+        </footer><!--end footer-->
+        <!-- End Footer -->
+
+        <!-- Back to top -->
+        <a href="#" onclick="topFunction()" id="back-to-top" class="back-to-top fixed hidden text-lg rounded-xl z-10 bottom-5 end-5 h-8 w-8 text-center bg-orange-500 hover:bg-orange-600 text-white leading-9 justify-center items-center duration-500"><i data-feather="arrow-up" class="h-[14px] w-[14px] stroke-[3]"></i></a>
+        <!-- Back to top -->
+
+        <!-- Switcher -->
+        <div class="fixed top-1/4 -right-2 z-3">
+            <span class="relative inline-block rotate-90">
+                <input type="checkbox" class="checkbox opacity-0 absolute" id="chk" />
+                <label class="label bg-slate-900 dark:bg-white shadow dark:shadow-gray-800 cursor-pointer rounded-full flex justify-between items-center p-1 w-14 h-8" for="chk">
+                    <i data-feather="moon" class="h-[18px] w-[18px] text-yellow-500"></i>
+                    <i data-feather="sun" class="h-[18px] w-[18px] text-yellow-500"></i>
+                    <span class="ball bg-white dark:bg-slate-900 rounded-full absolute top-[2px] left-[2px] w-7 h-7"></span>
+                </label>
+            </span>
+        </div>
+        <!-- Switcher -->
+
+        <!-- LTR & RTL Mode Code -->
+        <div class="fixed top-1/3 -right-3 z-50">
+            <a href="" id="switchRtl">
+                <span class="py-1 px-3 relative inline-block rounded-t-md -rotate-90 bg-white dark:bg-slate-900 shadow-md dark:shadow dark:shadow-gray-800 font-semibold rtl:block ltr:hidden" >LTR</span>
+                <span class="py-1 px-3 relative inline-block rounded-t-md -rotate-90 bg-white dark:bg-slate-900 shadow-md dark:shadow dark:shadow-gray-800 font-semibold ltr:block rtl:hidden">RTL</span>
+            </a>
+        </div>
+        <!-- LTR & RTL Mode Code -->
+
+        <!-- JAVASCRIPTS -->
+        <script src="assets/libs/tobii/js/tobii.min.js"></script>
+        <script src="assets/libs/feather-icons/feather.min.js"></script>
+        <script src="assets/js/plugins.init.js"></script>
+        <script src="assets/js/app.js"></script>
+        <!-- JAVASCRIPTS -->
+    </body>
+</html>
