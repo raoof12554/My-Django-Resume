@@ -128,8 +128,10 @@ MEDIA_ROOT = BASE_DIR / "mediafiles"
 STORAGES = {
     # پیکربندی Static File Storage توسط WhiteNoise
     "staticfiles": {
-        # استفاده از یک بک‌اند ذخیره‌سازی ساده‌تر برای جلوگیری از مشکلات Post-processing
-        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+        # تغییر به WhiteNoiseStaticFilesStorage ساده‌تر برای حل خطای Post-processing
+        # این بک‌اند از Manifest و Hashing برای امنیت استفاده می‌کند اما گام Compression را حذف می‌کند 
+        # و در یافتن فایل‌های جانبی مثل map.files کمتر سختگیر است.
+        "BACKEND": "whitenoise.storage.WhiteNoiseStaticFilesStorage",
     },
     
     # *** پیکربندی Media File Storage برای Production (S3) ***
@@ -163,11 +165,7 @@ if not DEBUG:
 WHITENOISE_IGNORE_FILE_TYPES = ['map', 'eot', 'ttf', 'woff', 'woff2', 'otf']
 WHITENOISE_MANIFEST_STRICT = False
 
-# **تنظیم جدید و حیاتی برای رفع خطای materialdesignicons.min.css**
-# این تنظیم به WhiteNoise می‌گوید که فایل‌های CSS/JS خاص را در مرحله Post-processing نادیده بگیرد.
-# WhiteNoise به‌طور پیش‌فرض فایل‌های *.min.css را برای یافتن ارجاعات تغییر مسیر (Manifest) اسکن می‌کند.
-# با این دستور، ما به WhiteNoise می‌گوییم که از پردازش فایل‌های CSS کتابخانه‌ای صرف نظر کند.
-WHITENOISE_SKIP_COMPRESS_CONTENT = ['assets/libs/@mdi/font/css/materialdesignicons.min.css']
+# **تنظیم WHITENOISE_SKIP_COMPRESS_CONTENT حذف شد** # و با تغییر WhiteNoiseStaticFilesStorage جایگزین شد.
 
 
 # ==========================================================
