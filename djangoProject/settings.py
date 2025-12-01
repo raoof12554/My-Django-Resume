@@ -14,6 +14,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-2=#49=b%(inur)!ev+ys^5f6v$m=le9by)e4_du148e_gy28av')
 
 # DEBUG: در Render (Production) باید False باشد مگر اینکه صریحاً True تنظیم شده باشد.
+# اگر متغیر محیطی DEBUG تنظیم نشده باشد، پیش‌فرض False است.
 DEBUG = os.environ.get('DEBUG') == 'True' 
 
 # ALLOWED_HOSTS: آدرس های مجاز برای دسترسی به سایت
@@ -46,7 +47,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     
-    # WhiteNoise برای مدیریت فایل‌های استاتیک در Production
+    # WhiteNoise برای مدیریت فایل‌های استاتیک در Production - باید بلافاصله بعد از SecurityMiddleware باشد
     'whitenoise.middleware.WhiteNoiseMiddleware', 
     
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -60,7 +61,7 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'djangoProject.urls'
 
 # ==========================================================
-# TEMPLATES (تنظیمات نهایی برای رفع خطای admin.E403)
+# ۳. TEMPLATES (تنظیمات نهایی برای رفع خطای admin.E403)
 # ==========================================================
 TEMPLATES = [
     {
@@ -85,7 +86,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'djangoProject.wsgi.application'
 
 # ==========================================================
-# ۳. تنظیمات دیتابیس (پشتیبانی از SQLite و Postgres)
+# ۴. تنظیمات دیتابیس (پشتیبانی از SQLite و Postgres)
 # ==========================================================
 
 # در Render از DATABASE_URL (Postgres) و در لوکال از SQLite استفاده می‌شود.
@@ -105,7 +106,7 @@ else:
     }
 
 # ==========================================================
-# ۴. سایر تنظیمات
+# ۵. سایر تنظیمات
 # ==========================================================
 
 AUTH_PASSWORD_VALIDATORS = [
@@ -133,13 +134,12 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 # ==========================================================
-# ۵. تنظیمات Static & Media Files
+# ۶. تنظیمات Static & Media Files (با استفاده از STORAGES)
 # ==========================================================
 
 STATIC_URL = '/static/'
 
 # مسیری برای جمع‌آوری فایل‌های استاتیک در Production (توسط collectstatic)
-# استفاده از pathlib.Path
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 # دایرکتوری‌های حاوی فایل‌های استاتیک که در اپ‌ها نیستند
@@ -148,17 +148,37 @@ STATICFILES_DIRS = [
     BASE_DIR / 'assets',
 ]
 
-# تنظیمات WhiteNoise: برای فشرده‌سازی و کش کردن فایل‌های استاتیک (ضروری برای Production)
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
-
 # Media Files (فایل‌های آپلود شده توسط کاربر)
 MEDIA_URL = '/mediafiles/'
 MEDIA_ROOT = BASE_DIR / "mediafiles"
 
+# پیکربندی مدرن ذخیره‌سازی فایل‌ها (Django 4.0+)
+STORAGES = {
+    # Default file storage (برای فایل‌های Media)
+    "default": {
+        "BACKEND": "django.core.files.storage.FileSystemStorage",
+    },
+    # Static file storage (برای WhiteNoise)
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+    },
+}
 
 # ==========================================================
-# ۶. متغیرهای سفارشی 
+# ۷. تنظیمات WhiteNoise (رفع خطای MissingFileError)
+# ==========================================================
+
+# WhiteNoise را برای نادیده گرفتن فایل‌های Map و فونت که در Production مورد نیاز نیستند، تنظیم می‌کند.
+# این تنظیم خطای whitenoise.storage.MissingFileError را رفع می‌کند.
+WHITENOISE_IGNORE_FILE_TYPES = ['map', 'eot', 'ttf', 'woff', 'woff2', 'otf']
+
+# اجبار WhiteNoise برای صدور هشدار به جای خطای بحرانی اگر فایل‌های ارجاع داده شده پیدا نشوند.
+# این اغلب مشکل فایل‌های Map را که به طور کامل توسط ignore_file_types حذف نمی‌شوند، حل می‌کند.
+WHITENOISE_MANIFEST_STRICT = False
+
+
+# ==========================================================
+# ۸. متغیرهای سفارشی 
 # ==========================================================
 
 RESUME_NAME = os.environ.get('RESUME_NAME', 'رزومه خورشید ریانه (نسخه لوکال)')
