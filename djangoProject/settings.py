@@ -45,7 +45,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # اپلیکیشن‌های شما:
     'Home_app.apps.HomeAppConfig', 
-    'contact_app', # <--- اپلیکیشن contact_app اضافه شد
+    'contact_app', 
+    'my_team', # <--- اپلیکیشن my_team اضافه شد
     # 'Resume_app.apps.ResumeAppConfig', 
 ]
 
